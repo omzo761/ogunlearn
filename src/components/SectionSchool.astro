@@ -1,0 +1,92 @@
+---
+// Section L'École
+---
+
+<section class="section school">
+  <div class="container school__inner">
+    <div class="school__cube">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="schoolGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#E85D3C"/>
+            <stop offset="100%" stop-color="#B84426"/>
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="90" fill="#1A1A1F"/>
+        <path d="M100 40 L150 60 V100 C150 130 130 155 100 165 C70 155 50 130 50 100 V60 Z" fill="url(#schoolGradient)"/>
+        <path d="M75 100 L92 117 L130 80" stroke="#F5EFE6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M30 30 L33 38 L41 40 L33 42 L30 50 L27 42 L19 40 L27 38 Z" fill="#D4A647"/>
+        <path d="M170 150 L172 156 L178 158 L172 160 L170 166 L168 160 L162 158 L168 156 Z" fill="#1E2A4A"/>
+      </svg>
+    </div>
+
+    <div>
+      <span class="section__eyebrow">L'école</span>
+      <h2>L'école de cybersécurité <em>pensée pour l'Afrique</em></h2>
+      <p>Fondée à Dakar en 2024 par une équipe de RSSI africains, OgunLearn est aujourd'hui reconnue comme un acteur de référence de la formation cyber sur le continent. Initiative du Groupe <strong>OgunSec</strong>, partenaire de l'ANSSI Sénégal et membre du Cyber Africa Forum.</p>
+      <div class="school__brands">
+        <span>Certifié <strong>Qualiopi</strong></span>
+        <span>Membre <strong>CAF</strong></span>
+        <span>Agréé <strong>ANSSI</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 110px 0; }
+  .school { background: var(--paper-deep); }
+
+  .section__eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--coral);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; padding: 5px 12px;
+    background: var(--coral-tint); border-radius: var(--r-pill);
+  }
+  .section__eyebrow::before { content: "✦"; font-size: 14px; }
+
+  .school__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 980px) {
+    .school__inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .school__cube {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid; place-items: center;
+  }
+  .school__cube svg { width: 100%; height: 100%; }
+
+  .school h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 4.4vw, 56px); line-height: 1.05;
+    letter-spacing: -0.03em; margin-bottom: 24px;
+  }
+  .school h2 :global(em) { font-style: italic; color: var(--coral); }
+  .school p {
+    font-size: 17px; line-height: 1.65;
+    color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .school p :global(strong) { color: var(--ink); font-weight: 600; }
+
+  .school__brands {
+    display: flex; align-items: center; gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .school__brands span {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 17px; color: var(--ink-mute);
+  }
+  .school__brands :global(strong) { color: var(--coral); font-weight: 700; }
+</style>

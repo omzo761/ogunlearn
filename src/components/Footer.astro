@@ -1,0 +1,147 @@
+---
+import Logo from './Logo.astro';
+
+const columns = [
+  {
+    title: 'Formations',
+    links: [
+      { label: 'RSSI Africain', href: '/formations/rssi-africain' },
+      { label: 'Pen Tester', href: '/formations/pen-tester' },
+      { label: 'Sécurité Cloud', href: '/formations/cloud-security' },
+      { label: 'DPO', href: '/formations/dpo' },
+      { label: 'Sensibilisation', href: '/formations/sensibilisation' },
+    ],
+  },
+  {
+    title: "L'école",
+    links: [
+      { label: 'À propos', href: '/a-propos' },
+      { label: 'Mentors', href: '/mentors' },
+      { label: 'Témoignages', href: '/temoignages' },
+      { label: 'Financement', href: '/financement' },
+      { label: 'Carrières', href: '/carrieres' },
+    ],
+  },
+  {
+    title: 'Ressources',
+    links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Guide cyber', href: '/guide' },
+      { label: 'Test cyber-maturité', href: '/test-cyber-maturite' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <Logo variant="dark" />
+        <p>Formez-vous aux métiers cyber d'avenir. Rejoignez les RSSI qui construisent le numérique africain.</p>
+        <div class="footer__social">
+          <a href="https://linkedin.com/company/ogunlearn" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </a>
+          <a href="https://instagram.com/ogunlearn" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+          </a>
+          <a href="https://youtube.com/@ogunlearn" aria-label="YouTube" rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      {columns.map(col => (
+        <div class="footer__col">
+          <h4>{col.title}</h4>
+          <ul>
+            {col.links.map(l => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="footer__bottom">
+      <div>© {year} OgunLearn — Forgé à Dakar, Abidjan, Lagos. Une initiative OgunSec.</div>
+      <div class="footer__legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cgu">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0 32px;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 880px) {
+    .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  .footer__brand p {
+    margin-top: 20px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    opacity: .75;
+    max-width: 340px;
+  }
+  .footer__social {
+    display: flex; gap: 10px;
+    margin-top: 24px;
+  }
+  .footer__social a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(245,239,230,.08);
+    transition: all var(--t-base);
+  }
+  .footer__social a:hover { background: var(--coral); }
+  .footer__social svg { width: 16px; height: 16px; }
+
+  .footer__col h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .footer__col ul {
+    list-style: none;
+    display: flex; flex-direction: column;
+    gap: 12px;
+    font-size: 14.5px;
+  }
+  .footer__col a {
+    opacity: .75;
+    transition: opacity var(--t-fast);
+  }
+  .footer__col a:hover { opacity: 1; }
+
+  .footer__bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,239,230,.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    opacity: .65;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer__legal { display: flex; gap: 24px; }
+</style>

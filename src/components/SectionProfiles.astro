@@ -1,0 +1,120 @@
+---
+const profiles = [
+  {
+    title: 'Évolution de carrière',
+    desc: 'Vous êtes IT Manager, DSI ou Risk Officer ? Montez en grade vers un poste de RSSI et structurez votre fonction sécurité.',
+    icon: 'cert',
+  },
+  {
+    title: 'Reconversion',
+    desc: 'Vous venez d\'un autre métier et voulez intégrer la cybersécurité, secteur en pénurie sur tout le continent ?',
+    icon: 'building',
+  },
+  {
+    title: 'Entreprises',
+    desc: 'Vous êtes RSSI ou DSI et vous voulez former en masse vos équipes ? Plan B2B, tableaux de bord, conformité.',
+    icon: 'document',
+  },
+  {
+    title: 'Étudiants & Diplômés',
+    desc: 'Vous sortez d\'école ? Augmentez votre employabilité en développant des compétences cyber recherchées partout.',
+    icon: 'cap',
+  },
+];
+---
+
+<section class="section profiles">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__eyebrow">À qui ça s'adresse ?</span>
+      <h2 class="section__title">La cybersécurité,<br/><em>pour chaque profil</em></h2>
+    </div>
+
+    <div class="profiles__grid">
+      {profiles.map(p => (
+        <div class="profile">
+          <div class="profile__icon">
+            {p.icon === 'cert' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>}
+            {p.icon === 'building' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v13M9 21V12h6v9"/></svg>}
+            {p.icon === 'document' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>}
+            {p.icon === 'cap' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>}
+          </div>
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 110px 0; position: relative; }
+  .profiles { background: var(--paper-deep); }
+
+  .section__head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+  .section__eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--coral);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; padding: 5px 12px;
+    background: var(--coral-tint); border-radius: var(--r-pill);
+  }
+  .section__eyebrow::before { content: "✦"; font-size: 14px; }
+  .section__title {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 60px); line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px;
+  }
+  .section__title :global(em) { font-style: italic; color: var(--coral); }
+
+  .profiles__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: var(--r-xl);
+    background: var(--card);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 980px) { .profiles__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .profiles__grid { grid-template-columns: 1fr; } }
+
+  .profile {
+    padding: 36px 28px;
+    border-right: 1px solid var(--rule);
+    transition: background var(--t-base);
+  }
+  .profile:last-child { border-right: 0; }
+  @media (max-width: 980px) {
+    .profile:nth-child(2) { border-right: 0; }
+    .profile:nth-child(1), .profile:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  }
+  @media (max-width: 560px) {
+    .profile { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .profile:last-child { border-bottom: 0; }
+  }
+  .profile:hover { background: var(--card-soft); }
+
+  .profile__icon {
+    width: 56px; height: 56px;
+    border-radius: var(--r-md);
+    display: grid; place-items: center;
+    margin-bottom: 24px;
+    background: var(--coral-tint);
+    color: var(--coral);
+  }
+  .profile:nth-child(2) .profile__icon { background: var(--indigo-soft); color: var(--indigo); }
+  .profile:nth-child(3) .profile__icon { background: #FFF4D9; color: var(--gold); }
+  .profile:nth-child(4) .profile__icon { background: #E9EEDB; color: var(--moss); }
+  .profile__icon svg { width: 26px; height: 26px; }
+
+  .profile h3 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 22px; letter-spacing: -0.018em; margin-bottom: 12px;
+  }
+  .profile p { font-size: 14.5px; color: var(--ink-mute); line-height: 1.55; }
+</style>

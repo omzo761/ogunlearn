@@ -1,0 +1,73 @@
+---
+const partners = [
+  { name: 'Sonatel', accent: true },
+  { name: 'Ecobank' },
+  { name: 'Orange CI' },
+  { name: 'BICIS', accent: true },
+  { name: 'MTN GH' },
+  { name: 'Wave' },
+  { name: 'CBE Bank' },
+  { name: 'Société Générale' },
+  { name: 'Air Sénégal' },
+  { name: 'CFAO' },
+];
+// Doublé pour boucle infinie
+const allPartners = [...partners, ...partners];
+---
+
+<section class="logos">
+  <div class="logos__track">
+    {allPartners.map((p) => (
+      <span class="logo-item">
+        {p.name}{p.accent && <small>•</small>}
+      </span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .logos {
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    overflow: hidden;
+    position: relative;
+  }
+  .logos::before, .logos::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .logos::before { left: 0; background: linear-gradient(90deg, var(--paper), transparent); }
+  .logos::after { right: 0; background: linear-gradient(-90deg, var(--paper), transparent); }
+
+  .logos__track {
+    display: flex;
+    gap: 64px;
+    animation: scroll 35s linear infinite;
+    width: max-content;
+  }
+  .logo-item {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--ink-soft);
+    letter-spacing: -0.015em;
+    opacity: .55;
+    flex-shrink: 0;
+    transition: opacity var(--t-fast);
+  }
+  .logo-item:hover { opacity: 1; }
+  .logo-item small {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--coral);
+    vertical-align: super;
+    margin-left: 2px;
+  }
+</style>

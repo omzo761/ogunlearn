@@ -1,0 +1,84 @@
+---
+import Logo from './Logo.astro';
+---
+
+<nav class="nav">
+  <div class="container nav__inner">
+    <Logo />
+
+    <div class="nav__links">
+      <a href="/formations">Formations <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg></a>
+      <a href="/#mentors">Mentors</a>
+      <a href="/#metiers">Métiers</a>
+      <a href="/#financement">Financement</a>
+      <a href="/temoignages">Témoignages</a>
+      <a href="/blog">Blog</a>
+    </div>
+
+    <div class="nav__cta">
+      <a href="/inscription" class="btn btn--ghost">S'inscrire</a>
+      <a href="/contact" class="btn btn--phone" aria-label="Parler à un conseiller">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245, 239, 230, 0.92);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .nav__links a {
+    transition: color var(--t-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav__links a:hover { color: var(--coral); }
+
+  .nav__cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn--phone {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--paper);
+    border-color: var(--coral);
+    justify-content: center;
+  }
+  .btn--phone:hover {
+    background: var(--coral-deep);
+    border-color: var(--coral-deep);
+  }
+
+  @media (max-width: 980px) {
+    .nav__links { display: none; }
+  }
+</style>

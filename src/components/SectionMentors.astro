@@ -1,0 +1,112 @@
+---
+const mentors = [
+  { initials: 'SD', name: 'Souleymane D.', role: 'RSSI — Banque CFA', linkedin: '#' },
+  { initials: 'AK', name: 'Aïssatou K.', role: 'Pentester — Orange CI', linkedin: '#' },
+  { initials: 'MN', name: 'Mamadou N.', role: 'DPO — Wave Sénégal', linkedin: '#' },
+  { initials: 'FT', name: 'Fatima T.', role: 'SOC Lead — Ecobank', linkedin: '#' },
+];
+---
+
+<section class="section" id="mentors">
+  <div class="container">
+    <div class="mentors__head">
+      <div class="left">
+        <span class="section__eyebrow">Parmi nos mentors</span>
+        <h2 class="section__title">Apprenez auprès<br/>de <em>praticiens en poste</em></h2>
+      </div>
+      <a href="/mentors" class="btn btn--ghost">Voir tous les formateurs →</a>
+    </div>
+
+    <div class="mentors__grid">
+      {mentors.map(m => (
+        <div class="mentor">
+          <div class="mentor__photo">{m.initials}</div>
+          <h4>{m.name}</h4>
+          <p>{m.role}</p>
+          <a href={m.linkedin} class="mentor__linkedin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 110px 0; }
+
+  .section__eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--coral);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; padding: 5px 12px;
+    background: var(--coral-tint); border-radius: var(--r-pill);
+  }
+  .section__eyebrow::before { content: "✦"; font-size: 14px; }
+  .section__title {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 60px); line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--ink); margin-bottom: 0;
+  }
+  .section__title :global(em) { font-style: italic; color: var(--coral); }
+
+  .mentors__head {
+    display: flex; align-items: end; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px; margin-bottom: 56px;
+  }
+  .mentors__head .left { max-width: 600px; }
+
+  .mentors__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 880px) { .mentors__grid { grid-template-columns: 1fr 1fr; } }
+
+  .mentor {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--card);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--rule);
+    transition: transform var(--t-base), box-shadow var(--t-base);
+  }
+  .mentor:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .mentor__photo {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 36px;
+    color: var(--paper);
+    background: var(--coral);
+  }
+  .mentor:nth-child(2) .mentor__photo { background: var(--indigo); }
+  .mentor:nth-child(3) .mentor__photo { background: var(--gold); }
+  .mentor:nth-child(4) .mentor__photo { background: var(--moss); }
+  .mentor h4 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 19px; letter-spacing: -0.015em; margin-bottom: 6px;
+  }
+  .mentor p { font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; }
+  .mentor__linkedin {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--r-pill);
+    font-size: 12px; font-weight: 600;
+    color: var(--ink-soft);
+    transition: all var(--t-base);
+  }
+  .mentor__linkedin:hover {
+    background: var(--ink); color: var(--paper);
+    border-color: var(--ink);
+  }
+  .mentor__linkedin svg { width: 12px; height: 12px; }
+</style>

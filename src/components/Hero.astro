@@ -1,0 +1,236 @@
+---
+// Hero - section d'accueil
+---
+
+<header class="hero">
+  <svg class="hero__star" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+    <path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z"/>
+  </svg>
+
+  <div class="hero__glyphs" aria-hidden="true">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 L20 6 V12 C20 17 16 21 12 22 C8 21 4 17 4 12 V6 Z"/>
+      </svg>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="6"/>
+        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container hero__inner">
+    <h1 class="reveal">
+      Formez-vous à la <em>cybersécurité</em><br/>
+      des entreprises <span class="hand">africaines</span>
+    </h1>
+
+    <p class="hero__sub reveal d1">
+      Accélérez votre carrière ou armez vos équipes avec nos formations intensives en cyberdéfense, conformité et gestion de crise — conçues pour le terrain africain.
+    </p>
+
+    <div class="hero__cta reveal d2">
+      <a href="/inscription" class="btn btn--primary btn--lg">S'inscrire à une formation</a>
+      <div class="trustpilot">
+        <div class="trustpilot__stars">
+          {Array.from({ length: 5 }).map(() => (
+            <span>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+              </svg>
+            </span>
+          ))}
+        </div>
+        <div class="trustpilot__text">
+          <b>Excellent</b> · <strong>4.9/5</strong> sur Trustpilot
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__stats reveal d3">
+      <div><strong>+50</strong><span>Mentors RSSI</span></div>
+      <div><strong>+3000</strong><span>Apprenants formés</span></div>
+      <div><strong>+200</strong><span>Entreprises partenaires</span></div>
+      <div><strong>4.9<em>/5</em></strong><span>Note Trustpilot</span></div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 96px 0 80px;
+    overflow: hidden;
+  }
+  .hero__star {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 56px;
+    height: 56px;
+    color: var(--coral);
+    transform: rotate(-15deg);
+    animation: spin 18s linear infinite;
+  }
+  @media (max-width: 980px) { .hero__star { display: none; } }
+
+  .hero__glyphs {
+    position: absolute;
+    top: 110px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    z-index: 0;
+  }
+  .hero__glyphs > div {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color: var(--paper);
+    box-shadow: 0 6px 24px -10px rgba(0,0,0,.15);
+  }
+  .hero__glyphs > div:nth-child(1) {
+    background: var(--coral);
+    transform: rotate(-8deg);
+    animation: float 6s ease-in-out infinite;
+  }
+  .hero__glyphs > div:nth-child(2) {
+    background: var(--indigo);
+    transform: rotate(6deg) translateX(-20px);
+    animation: float 6s ease-in-out infinite .8s;
+  }
+  .hero__glyphs > div:nth-child(3) {
+    background: var(--gold);
+    transform: rotate(-4deg) translateX(8px);
+    animation: float 6s ease-in-out infinite 1.6s;
+  }
+  .hero__glyphs svg { width: 30px; height: 30px; }
+  @media (max-width: 1100px) { .hero__glyphs { display: none; } }
+
+  .hero__inner {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero :global(h1) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero :global(h1 em) {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--coral);
+  }
+  .hero :global(.hand) {
+    position: relative;
+    display: inline-block;
+  }
+  .hero :global(.hand::after) {
+    content: "";
+    position: absolute;
+    left: -6px;
+    right: -6px;
+    bottom: 4px;
+    height: 14px;
+    background: var(--coral-soft);
+    z-index: -1;
+    border-radius: 4px;
+    transform: skewX(-3deg);
+  }
+
+  .hero__sub {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+  .hero__cta {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .trustpilot {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    background: var(--card);
+    border-radius: var(--r-pill);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow-sm);
+  }
+  .trustpilot__stars { display: flex; gap: 2px; }
+  .trustpilot__stars span {
+    width: 18px;
+    height: 18px;
+    background: #00B67A;
+    display: grid;
+    place-items: center;
+    color: white;
+  }
+  .trustpilot__stars span svg { width: 11px; height: 11px; }
+  .trustpilot__text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .trustpilot__text b { color: var(--ink); font-weight: 700; }
+  .trustpilot strong {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .hero__stats {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    margin-top: 64px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 640px) { .hero__stats { gap: 32px; } }
+  .hero__stats > div { text-align: center; }
+  .hero__stats strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 48px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .hero__stats strong em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 400;
+  }
+  .hero__stats span {
+    display: block;
+    margin-top: 8px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+</style>

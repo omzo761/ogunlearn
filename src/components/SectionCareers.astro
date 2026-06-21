@@ -1,0 +1,102 @@
+---
+const careers = [
+  { num: '01', title: 'RSSI', desc: 'Pilotez la stratégie sécurité d\'une organisation, dialoguez avec le COMEX, gérez les crises.', href: '/metiers/rssi' },
+  { num: '02', title: 'Pen Tester', desc: 'Testez les défenses, exploitez les failles, rédigez des rapports actionnables pour vos clients.', href: '/metiers/pentester' },
+  { num: '03', title: 'SOC Analyst', desc: 'Détectez les incidents en temps réel, intervenez sur les alertes, automatisez la réponse.', href: '/metiers/soc-analyst' },
+  { num: '04', title: 'DPO / Conformité', desc: 'Garant de la protection des données, vous accompagnez la mise en conformité RGPD et UEMOA.', href: '/metiers/dpo' },
+];
+---
+
+<section class="section" id="metiers">
+  <div class="container">
+    <div class="careers__head">
+      <span class="section__eyebrow">Les métiers de la cyber</span>
+      <h2 class="section__title">Vos <em>débouchés</em><br/>après la formation</h2>
+      <div class="badge">
+        <b>+500</b> offres d'emploi cyber disponibles en Afrique de l'Ouest
+      </div>
+    </div>
+
+    <div class="careers__grid">
+      {careers.map(c => (
+        <a href={c.href} class="career">
+          <div class="career__num">{c.num}</div>
+          <h3>{c.title}</h3>
+          <p>{c.desc}</p>
+          <span class="career__link">En savoir plus →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 110px 0; }
+
+  .section__eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--coral);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; padding: 5px 12px;
+    background: var(--coral-tint); border-radius: var(--r-pill);
+  }
+  .section__eyebrow::before { content: "✦"; font-size: 14px; }
+  .section__title {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 60px); line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px;
+  }
+  .section__title :global(em) { font-style: italic; color: var(--coral); }
+
+  .careers__head { text-align: center; margin-bottom: 64px; }
+  .careers__head .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: var(--coral-tint);
+    color: var(--coral-deep);
+    border-radius: var(--r-pill);
+    font-size: 13px; font-weight: 600;
+    margin-top: 20px;
+  }
+  .careers__head .badge b { color: var(--coral); font-weight: 700; }
+
+  .careers__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 980px) { .careers__grid { grid-template-columns: 1fr 1fr; } }
+
+  .career {
+    background: var(--card);
+    border-radius: var(--r-lg);
+    padding: 30px 26px;
+    border: 1px solid var(--rule);
+    transition: transform var(--t-base), box-shadow var(--t-base);
+    display: block;
+  }
+  .career:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .career__num {
+    font-family: var(--font-display);
+    font-style: italic; font-weight: 400;
+    font-size: 44px; color: var(--coral);
+    line-height: 1; margin-bottom: 24px;
+  }
+  .career h3 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 21px; letter-spacing: -0.018em; margin-bottom: 12px;
+  }
+  .career p {
+    font-size: 14px; color: var(--ink-mute);
+    line-height: 1.55; margin-bottom: 18px;
+  }
+  .career__link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 600; color: var(--coral);
+    transition: gap var(--t-fast);
+  }
+  .career:hover .career__link { gap: 10px; }
+</style>

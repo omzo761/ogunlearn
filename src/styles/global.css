@@ -1,0 +1,149 @@
+@import './tokens.css';
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  background: 0;
+  color: inherit;
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+}
+@media (max-width: 720px) {
+  .container { padding: 0 20px; }
+}
+
+/* ============================================================
+   BOUTONS — composant réutilisable
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 14.5px;
+  transition: all var(--t-base);
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+}
+.btn--ghost {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: transparent;
+}
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn--primary {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btn--primary:hover {
+  background: var(--coral);
+  border-color: var(--coral);
+  transform: translateY(-1px);
+}
+.btn--coral {
+  color: var(--paper);
+  background: var(--coral);
+  border-color: var(--coral);
+}
+.btn--coral:hover {
+  background: var(--coral-deep);
+  border-color: var(--coral-deep);
+  transform: translateY(-1px);
+}
+.btn--lg {
+  padding: 16px 28px;
+  font-size: 15.5px;
+}
+
+/* ============================================================
+   ANIMATIONS GLOBALES
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.reveal.d1 { animation-delay: .08s; }
+.reveal.d2 { animation-delay: .2s; }
+.reveal.d3 { animation-delay: .32s; }
+.reveal.d4 { animation-delay: .44s; }
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Respect des préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

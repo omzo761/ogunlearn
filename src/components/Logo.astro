@@ -1,0 +1,60 @@
+---
+interface Props {
+  variant?: 'light' | 'dark';
+}
+const { variant = 'light' } = Astro.props;
+---
+
+<a href="/" class={`logo logo--${variant}`} aria-label="OgunLearn - Accueil">
+  <span class="logo__mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2 L20 6 V12 C20 17 16 21 12 22 C8 21 4 17 4 12 V6 Z"/>
+      <path d="M9 12 L11 14 L15 10"/>
+    </svg>
+  </span>
+  <span class="logo__text"><b>Ogun</b><span class="logo__italic">Learn</span></span>
+</a>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 23px;
+    letter-spacing: -0.025em;
+  }
+  .logo__mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 11px;
+    position: relative;
+  }
+  .logo__mark::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--coral);
+    border-radius: 50%;
+    bottom: -3px;
+    right: -3px;
+    border: 2px solid var(--paper);
+  }
+  .logo__mark svg {
+    width: 20px;
+    height: 20px;
+  }
+  .logo--light b { color: var(--ink); font-weight: 700; }
+  .logo--light .logo__italic { color: var(--ink-mute); font-style: italic; font-weight: 400; }
+
+  .logo--dark .logo__mark { background: var(--paper); color: var(--ink); }
+  .logo--dark .logo__mark::after { border-color: var(--ink); }
+  .logo--dark b { color: var(--paper); font-weight: 700; }
+  .logo--dark .logo__italic { color: var(--ink-faint); font-style: italic; font-weight: 400; }
+</style>

@@ -1,0 +1,346 @@
+---
+// Data centralisée — sera bougée vers src/data/formations.json plus tard
+const formations = [
+  {
+    id: 'rssi-africain',
+    tag: 'Formation Métier',
+    badge: 'Nouveau',
+    style: 'dark',
+    title: 'RSSI africain — la transformation',
+    desc: 'Le programme flagship pour piloter une fonction sécurité de bout en bout dans le contexte UEMOA.',
+    features: [
+      { icon: '🎓', text: 'Titre RNCP Niveau 6 — RSSI' },
+      { icon: '⌛', text: '6 mois à temps partiel' },
+      { icon: '🛜', text: 'Formation 100% à distance' },
+      { icon: '💼', text: '1 projet professionnel évalué' },
+      { icon: '🤝', text: 'Mentorat 1-1 avec un RSSI en poste' },
+      { icon: '✅', text: 'Éligible CPF, OPCO, France Travail' },
+    ],
+    href: '/formations/rssi-africain',
+  },
+  {
+    id: 'pen-tester',
+    tag: 'Formation Métier',
+    badge: 'Star',
+    style: 'featured',
+    title: 'Pen Tester offensif',
+    desc: 'OWASP, Burp, Metasploit. Apprendre à attaquer pour mieux défendre. Lab privé fourni.',
+    features: [
+      { icon: '🎓', text: 'Certification CEH alignée' },
+      { icon: '⌛', text: '4 mois à temps partiel' },
+      { icon: '🛜', text: 'Formation à distance + labs' },
+      { icon: '💼', text: '1 projet de pentest réel' },
+      { icon: '🤝', text: 'Mentor expert pentester' },
+      { icon: '✅', text: 'Éligible aux financements' },
+    ],
+    href: '/formations/pen-tester',
+  },
+  {
+    id: 'cloud-security',
+    tag: 'Formation Compétence',
+    style: 'default',
+    title: 'Sécurité Cloud AWS / GCP',
+    desc: 'IAM, segmentation, monitoring. Adaptée aux migrations massives en cours sur le continent.',
+    features: [
+      { icon: '🎓', text: 'Certification de compétences' },
+      { icon: '⌛', text: '3 mois à temps partiel' },
+      { icon: '🛜', text: 'Formation à distance' },
+      { icon: '💼', text: '1 projet cloud réel' },
+      { icon: '🤝', text: 'Soutien individuel' },
+      { icon: '✅', text: 'Éligible au financement OPCO' },
+    ],
+    href: '/formations/cloud-security',
+  },
+  {
+    id: 'dpo',
+    tag: 'Formation Compétence',
+    style: 'default',
+    title: 'DPO — Protection des données',
+    desc: 'Loi 2008-12 Sénégal, RGPD, transferts internationaux. Le parcours conformité de référence.',
+    features: [
+      { icon: '🎓', text: 'Certification DPO' },
+      { icon: '⌛', text: '5 mois à temps partiel' },
+      { icon: '🛜', text: 'Formation à distance' },
+      { icon: '💼', text: '1 audit de conformité' },
+      { icon: '🤝', text: 'Mentor DPO certifié' },
+      { icon: '✅', text: 'Éligible aux financements' },
+    ],
+    href: '/formations/dpo',
+  },
+  {
+    id: 'splunk',
+    tag: 'Formation Outil',
+    style: 'default',
+    title: 'Maîtrise de Splunk SIEM',
+    desc: 'Centralisez vos logs, détectez les menaces, automatisez vos réponses incident.',
+    features: [
+      { icon: '🎓', text: 'Certification Splunk Core' },
+      { icon: '⌛', text: '3 mois à temps partiel' },
+      { icon: '🛜', text: 'Lab cloud fourni' },
+      { icon: '💼', text: 'Cas pratiques SOC' },
+      { icon: '🤝', text: 'Soutien individuel' },
+      { icon: '✅', text: 'Éligible au financement OPCO' },
+    ],
+    href: '/formations/splunk',
+  },
+  {
+    id: 'sensibilisation',
+    tag: 'Formation Découverte',
+    style: 'default',
+    title: 'Sensibilisation collaborateur',
+    desc: 'Mots de passe, phishing, mobile, données. Pour 100% des effectifs, en 4 heures.',
+    features: [
+      { icon: '🎓', text: 'Attestation de suivi' },
+      { icon: '⌛', text: '4 heures, 12 min/semaine' },
+      { icon: '🛜', text: 'Format mobile-first' },
+      { icon: '💼', text: 'Quiz de validation' },
+      { icon: '🤝', text: 'Suivi RSSI inclus' },
+      { icon: '✅', text: 'Tarif équipe dégressif' },
+    ],
+    href: '/formations/sensibilisation',
+  },
+];
+---
+
+<section class="section formations" id="formations">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__eyebrow">Nos formations</span>
+      <h2 class="section__title">Du collaborateur curieux<br/>au <em>RSSI confirmé</em></h2>
+      <p class="section__lede">Développez des compétences cyber concrètes en quelques mois. Rejoignez l'un de nos programmes immersifs, où que vous soyez.</p>
+    </div>
+
+    <div class="formations__filters">
+      <button class="filter is-active" data-filter="all">Tous</button>
+      <button class="filter" data-filter="metier">Métiers</button>
+      <button class="filter" data-filter="competence">Compétences</button>
+      <button class="filter" data-filter="outil">Outils</button>
+    </div>
+
+    <div class="formations__grid">
+      {formations.map(f => (
+        <article class={`formation formation--${f.style}`}>
+          <div class="formation__top">
+            <span class="formation__tag">{f.tag}</span>
+            {f.badge && <span class="formation__badge">{f.badge}</span>}
+          </div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+          <ul class="formation__features">
+            {f.features.map(feat => (
+              <li>{feat.icon} {feat.text}</li>
+            ))}
+          </ul>
+          <a href={f.href} class="formation__cta">Voir le programme →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .formations { background: var(--paper); padding: 110px 0; }
+
+  .section__head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .section__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--coral);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 5px 12px;
+    background: var(--coral-tint);
+    border-radius: var(--r-pill);
+  }
+  .section__eyebrow::before { content: "✦"; font-size: 14px; }
+
+  .section__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .section__title :global(em) {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 400;
+  }
+  .section__lede {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .formations__filters {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .filter {
+    padding: 10px 20px;
+    border-radius: var(--r-pill);
+    background: transparent;
+    border: 1.5px solid var(--rule-strong);
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--t-fast);
+  }
+  .filter:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .filter.is-active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .formations__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 980px) { .formations__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 680px) { .formations__grid { grid-template-columns: 1fr; } }
+
+  .formation {
+    background: var(--card);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--t-base), box-shadow var(--t-base);
+    position: relative;
+  }
+  .formation:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .formation--featured {
+    background: var(--coral-tint);
+    border-color: var(--coral);
+  }
+  .formation--dark {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .formation--dark p,
+  .formation--dark .formation__features li {
+    color: var(--paper);
+    opacity: .85;
+  }
+
+  .formation__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+  }
+  .formation__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-pill);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .formation--dark .formation__tag {
+    background: rgba(245,239,230,.1);
+    border-color: rgba(245,239,230,.2);
+    color: var(--paper);
+  }
+  .formation--featured .formation__tag {
+    background: var(--card);
+    border-color: var(--coral-soft);
+  }
+  .formation__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: var(--coral);
+    color: var(--paper);
+    border-radius: var(--r-pill);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .formation h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .formation p {
+    font-size: 14.5px;
+    color: var(--ink-mute);
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .formation__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .formation__features li { color: var(--ink-soft); }
+
+  .formation__cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    font-size: 14px;
+    align-self: flex-start;
+    transition: all var(--t-base);
+  }
+  .formation__cta:hover {
+    background: var(--coral);
+    gap: 12px;
+  }
+  .formation--dark .formation__cta { background: var(--coral); }
+  .formation--dark .formation__cta:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .formation--featured .formation__cta { background: var(--coral); }
+  .formation--featured .formation__cta:hover { background: var(--ink); }
+</style>
